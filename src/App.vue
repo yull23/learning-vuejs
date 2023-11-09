@@ -1,33 +1,22 @@
-<script setup>
-const arrayFruts = [
-  {
-    name: "Manzana",
-    price: "$1.00",
-    description: "Una manzana",
-    count: 5,
-  },
-  {
-    name: "Pera",
-    price: "$2.00",
-    description: "Una pera",
-    count: 10,
-  },
-  {
-    name: "Naranja",
-    price: "$3.00",
-    description: "Una naranja",
-    count: 8,
-  },
-];
-const number = 2
-
+<script>
+export default {
+  methods: {
+    handleCLick() {
+      console.log("Click");
+    },
+    handleCLick2(x) {
+      console.log(`Click in button ${x}`)
+    }
+  }
+}
 </script>
+
 <template>
-  <p>Hola</p>
-  <ul v-for="(objectFruit, index) in arrayFruts" :key="objectFruit.name">
-    <p>Frut: {{ objectFruit.name }}</p>
-    <li v-for="(value, key) in objectFruit" :key="key">
-      {{ key }} : {{ value }}
-    </li>
-  </ul>
+  <button @click="handleCLick">
+    Click me!
+  </button>
+  <p>According to click</p>
+  <button @click.right.prevent="handleCLick2(1)">Button 1</button>
+  <button @click="handleCLick2(2)">Button 2</button>
+  <button @click.middle="handleCLick2(3)">Button 3</button>
 </template>
